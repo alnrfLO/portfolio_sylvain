@@ -27,24 +27,50 @@ export default function App() {
     document.documentElement.classList.toggle("theme-light", themeLight);
   }, [themeLight]);
 
+  // Scroll spy avec détection plus précise
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && e.target.id) setActiveSection(e.target.id);
-        });
-      },
-      { threshold: 0.3 }
-    );
-    document.querySelectorAll("section[id]").forEach((s) => obs.observe(s));
-    return () => obs.disconnect();
+    const handleScroll = () => {
+      const sections = [
+        { id: "hero", element: document.getElementById("hero") },
+        { id: "about", element: document.getElementById("about") },
+        { id: "skills", element: document.getElementById("skills") },
+        { id: "projects", element: document.getElementById("projects") },
+        { id: "contact", element: document.getElementById("contact") },
+      ];
+
+      let current = "hero";
+      const scrollPos = window.scrollY + 100; // Offset pour une meilleure détection
+
+      for (let section of sections) {
+        if (section.element) {
+          const { top, bottom } = section.element.getBoundingClientRect();
+          const elementTop = window.scrollY + top;
+
+          if (scrollPos >= elementTop) {
+            current = section.id;
+          }
+        }
+      }
+
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="app">
-      <a className="skip-link" href="#main">Aller au contenu</a>
+      <a className="skip-link" href="#main">
+        Aller au contenu
+      </a>
       <Header
         active={activeSection}
         onNavigate={scrollTo}
@@ -59,7 +85,9 @@ export default function App() {
         <Contact />
       </main>
       <Footer onTop={() => scrollTo("hero")} />
-      {modalProject && <ProjectModal project={modalProject} onClose={() => setModalProject(null)} />}
+      {modalProject && (
+        <ProjectModal project={modalProject} onClose={() => setModalProject(null)} />
+      )}
     </div>
   );
 }

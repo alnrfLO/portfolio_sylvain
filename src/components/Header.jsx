@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logoImg from "../assets/logo.svg";
 
 export default function Header({ active, onNavigate, themeLight, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +8,7 @@ export default function Header({ active, onNavigate, themeLight, toggleTheme }) 
   const navItems = [
     { id: "hero", label: "Accueil", icon: "🏠" },
     { id: "about", label: "Parcours", icon: "📚" },
+    { id: "skills", label: "Compétences", icon: "⚡" },
     { id: "projects", label: "Projets", icon: "💼" },
     { id: "contact", label: "Contact", icon: "✉️" },
   ];
@@ -30,10 +32,8 @@ export default function Header({ active, onNavigate, themeLight, toggleTheme }) 
       {/* Left side - Logo & Brand */}
       <div className="header-left">
         <div className="logo-container">
-          <div className="logo-box">
-            <span className="logo-text">S</span>
-            <div className="logo-glow"></div>
-          </div>
+          <img src={logoImg} alt="Logo Sylvain" className="logo-image" />
+          <div className="logo-glow"></div>
         </div>
         <div className="brand-info">
           <div className="brand-name">Sylvain</div>

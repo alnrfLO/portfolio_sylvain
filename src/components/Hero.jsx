@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
+import useTypewriter from "../hooks/useTypewriter";
 
 export default function Hero({ onCTA }) {
   const [animateText, setAnimateText] = useState(false);
+
+  // Typewriter animations
+  const greeting = useTypewriter("Bonjour, je suis", 80, 100);
+  const name = useTypewriter("Sylvain Belevindiran", 60, greeting.isComplete ? 700 : 999999);
+  const subtitle = useTypewriter(
+    "Développeur Full‑Stack — React · Node.js · Design",
+    40,
+    name.isComplete ? 500 : 999999
+  );
 
   useEffect(() => {
     setAnimateText(true);
@@ -21,24 +31,33 @@ export default function Hero({ onCTA }) {
       {/* Contenu principal */}
       <div className="hero-wrapper">
         <div className={`hero-greeting ${animateText ? "animate" : ""}`}>
-          Bonjour, je suis
+          <span className="typewriter-text">
+            {greeting.displayedText}
+            <span className={`typewriter-cursor ${greeting.isComplete ? "hidden" : ""}`}></span>
+          </span>
         </div>
 
-        <h1 className={`hero-name ${animateText ? "animate" : ""}`}>
-          Sylvain Belevindiran
+        <h1 className="hero-name">
+          <span className="typewriter-text">
+            {name.displayedText}
+            <span className={`typewriter-cursor ${name.isComplete ? "hidden" : ""}`}></span>
+          </span>
         </h1>
 
-        <p className={`hero-subtitle ${animateText ? "animate" : ""}`}>
-          Développeur Full‑Stack — React · Node.js · Design
+        <p className="hero-subtitle">
+          <span className="typewriter-text">
+            {subtitle.displayedText}
+            <span className={`typewriter-cursor ${subtitle.isComplete ? "hidden" : ""}`}></span>
+          </span>
         </p>
 
-        <p className={`hero-description ${animateText ? "animate" : ""}`}>
+        <p className={`hero-description ${subtitle.isComplete ? "show" : ""}`}>
           Je crée des expériences web performantes, accessibles et intuitives.<br />
           Passionné par le code propre et les interfaces soignées.
         </p>
 
         {/* Boutons CTA */}
-        <div className={`hero-ctas ${animateText ? "animate" : ""}`}>
+        <div className={`hero-ctas ${subtitle.isComplete ? "show" : ""}`}>
           <button className="btn btn-primary" onClick={onCTA} type="button">
             ↓ Voir mes projets
           </button>
@@ -48,7 +67,7 @@ export default function Hero({ onCTA }) {
         </div>
 
         {/* Stats */}
-        <div className={`hero-stats ${animateText ? "animate" : ""}`}>
+        <div className={`hero-stats ${subtitle.isComplete ? "show" : ""}`}>
           <div className="hero-stat">
             <div className="stat-number">03</div>
             <div className="stat-text">ans d'expérience</div>
@@ -67,7 +86,7 @@ export default function Hero({ onCTA }) {
       </div>
 
       {/* Scroll indicator */}
-      <div className={`scroll-hint ${animateText ? "animate" : ""}`}>
+      <div className={`scroll-hint ${subtitle.isComplete ? "show" : ""}`}>
         <span>Scroll</span>
         <div className="scroll-icon">⬇</div>
       </div>

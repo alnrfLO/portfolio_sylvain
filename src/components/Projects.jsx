@@ -8,7 +8,10 @@ export default function Projects({ projects, onOpen }) {
     [projects]
   );
 
-  const filtered = filter === "TOUS" ? projects : projects.filter((p) => p.category === filter);
+  const filtered =
+    filter === "TOUS"
+      ? projects
+      : projects.filter((p) => p.category === filter);
 
   return (
     <section id="projects" className="section projects">
@@ -42,7 +45,9 @@ export default function Projects({ projects, onOpen }) {
               if (e.key === "Enter") onOpen(project);
             }}
           >
-            <div className={`project-icon ${project.wispColor}`}>{project.emoji}</div>
+            <div className={`project-icon ${project.wispColor}`}>
+              {project.emoji}
+            </div>
             <div className="project-info">
               <h3>{project.name}</h3>
               <p className="project-desc">{project.desc}</p>
@@ -55,7 +60,9 @@ export default function Projects({ projects, onOpen }) {
               </div>
             </div>
             <div className="project-meta">
-              <div className={`rank-badge ${project.rankClass}`}>{project.rank}</div>
+              <div className={`rank-badge ${project.rankClass}`}>
+                {project.rank}
+              </div>
             </div>
           </article>
         ))}

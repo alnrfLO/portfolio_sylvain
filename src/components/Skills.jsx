@@ -80,7 +80,9 @@ export default function Skills() {
     <section id="skills" className="section skills">
       <div className="section-header">
         <h2>Compétences</h2>
-        <p className="section-subtitle">Technologies et outils que je maîtrise</p>
+        <p className="section-subtitle">
+          Technologies et outils que je maîtrise
+        </p>
       </div>
 
       {/* Carousel des logos */}
