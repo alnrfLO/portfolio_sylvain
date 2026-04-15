@@ -26,6 +26,8 @@ portfoliosylvain
 ├─ src
 │  ├─ App.css
 │  ├─ App.jsx
+│  ├─ assets
+│  │  └─ logo.svg
 │  ├─ components
 │  │  ├─ About.jsx
 │  │  ├─ Contact.jsx
@@ -39,6 +41,8 @@ portfoliosylvain
 │  │  ├─ contacts.js
 │  │  ├─ projects.js
 │  │  └─ skills.js
+│  ├─ hooks
+│  │  └─ useTypewriter.js
 │  ├─ index.css
 │  ├─ main.jsx
 │  └─ styles.css
