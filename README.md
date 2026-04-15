@@ -30,3 +30,32 @@ portfoliosylvain
 └─ vite.config.js
 
 ```
+```
+portfoliosylvain
+├─ eslint.config.js
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ src
+│  ├─ App.css
+│  ├─ App.jsx
+│  ├─ components
+│  │  ├─ About.jsx
+│  │  ├─ Contact.jsx
+│  │  ├─ Footer.jsx
+│  │  ├─ Header.jsx
+│  │  ├─ Hero.jsx
+│  │  ├─ ProjectModal.jsx
+│  │  ├─ Projects.jsx
+│  │  └─ Skills.jsx
+│  ├─ data
+│  │  ├─ contacts.js
+│  │  ├─ projects.js
+│  │  └─ skills.js
+│  ├─ index.css
+│  ├─ main.jsx
+│  └─ styles.css
+└─ vite.config.js
+
+```
