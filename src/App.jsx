@@ -18,6 +18,7 @@ export default function App() {
       return false;
     }
   });
+
   const [activeSection, setActiveSection] = useState("hero");
   const [modalProject, setModalProject] = useState(null);
 
@@ -26,7 +27,6 @@ export default function App() {
     document.documentElement.classList.toggle("theme-light", themeLight);
   }, [themeLight]);
 
-  // simple scroll spy
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => {
@@ -34,33 +34,32 @@ export default function App() {
           if (e.isIntersecting && e.target.id) setActiveSection(e.target.id);
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.3 }
     );
     document.querySelectorAll("section[id]").forEach((s) => obs.observe(s));
     return () => obs.disconnect();
   }, []);
 
-  const openModal = (project) => setModalProject(project);
-  const closeModal = () => setModalProject(null);
+  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div className="app">
       <a className="skip-link" href="#main">Aller au contenu</a>
       <Header
         active={activeSection}
-        onNavigate={(id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
+        onNavigate={scrollTo}
         themeLight={themeLight}
         toggleTheme={() => setThemeLight((v) => !v)}
       />
-      <main id="main" className="container">
-        <Hero onPrimary={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} />
+      <main id="main" className="main-content">
+        <Hero onCTA={() => scrollTo("projects")} />
         <About />
         <Skills />
-        <Projects projects={PROJECTS} onOpen={openModal} />
+        <Projects projects={PROJECTS} onOpen={setModalProject} />
         <Contact />
       </main>
-      <Footer onTop={() => document.getElementById("main")?.scrollIntoView({ behavior: "smooth" })} />
-      {modalProject && <ProjectModal project={modalProject} onClose={closeModal} />}
+      <Footer onTop={() => scrollTo("hero")} />
+      {modalProject && <ProjectModal project={modalProject} onClose={() => setModalProject(null)} />}
     </div>
   );
 }

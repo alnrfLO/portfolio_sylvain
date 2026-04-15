@@ -3,15 +3,21 @@ import CONTACTS from "../data/contacts";
 
 export default function Contact() {
   return (
-    <section id="contact" className="hero-card" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
+    <section id="contact" className="section contact">
+      <div className="section-header">
+        <h2>Contact</h2>
+        <p className="section-subtitle">Disponible pour discuter de vos projets</p>
+      </div>
+
       <div className="contact-grid">
-        {CONTACTS.map(c => (
-          <div className="contact-card" key={c.label}>
-            <div className="contact-icon">{c.icon}</div>
-            <div className="contact-label">// {c.label}</div>
-            <div className="contact-val">{c.val}</div>
-            <a className="contact-link" href={c.link} target="_blank" rel="noreferrer">{c.linkLabel}</a>
+        {CONTACTS.map((contact) => (
+          <div key={contact.label} className="contact-card">
+            <span className="contact-icon">{contact.icon}</span>
+            <h3>{contact.label}</h3>
+            <p>{contact.val}</p>
+            <a className="contact-link" href={contact.link} target="_blank" rel="noreferrer">
+              {contact.linkLabel}
+            </a>
           </div>
         ))}
       </div>

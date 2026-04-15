@@ -1,12 +1,12 @@
 const SKILLS = [
-  { name: "HTML / CSS", pct: 92, color: "sf-cyan" },
-  { name: "JavaScript", pct: 88, color: "sf-gold" },
-  { name: "React", pct: 85, color: "sf-cyan" },
-  { name: "Node.js", pct: 78, color: "sf-green" },
-  { name: "UI / UX", pct: 80, color: "sf-pink" },
-  { name: "TypeScript", pct: 70, color: "sf-cyan" },
-  { name: "Git / DevOps", pct: 82, color: "sf-gold" },
-  { name: "Figma", pct: 74, color: "sf-pink" },
+  { name: "React", pct: 92, color: "fill-cyan" },
+  { name: "JavaScript", pct: 90, color: "fill-gold" },
+  { name: "TypeScript", pct: 78, color: "fill-cyan" },
+  { name: "Node.js", pct: 85, color: "fill-green" },
+  { name: "CSS3 & Tailwind", pct: 88, color: "fill-pink" },
+  { name: "Next.js", pct: 82, color: "fill-orange" },
+  { name: "MongoDB & SQL", pct: 80, color: "fill-cyan" },
+  { name: "Git & DevOps", pct: 86, color: "fill-gold" },
 ];
 
 export default SKILLS;
